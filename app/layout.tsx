@@ -10,13 +10,15 @@ export const metadata: Metadata = {
   description:
     "NeuraOps designs digital products, workflow automation, and AI systems that turn complex business operations into scalable growth.",
   keywords: [
+    "NeuraOps",
+    "Neura Ops",
+    "NeuraOps Technologies",
     "AI automation company",
     "workflow automation",
     "digital product development",
     "AI systems",
     "business process optimization",
     "custom software development",
-    "NeuraOps Technologies",
   ],
   authors: [{ name: "NeuraOps Technologies", url: "https://neuraops.in" }],
   creator: "NeuraOps Technologies",
@@ -26,9 +28,11 @@ export const metadata: Metadata = {
   applicationName: "NeuraOps Technologies",
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
       { url: "/media/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/media/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
+    shortcut: ["/favicon.ico"],
     apple: [{ url: "/media/icon-192.png", sizes: "192x192" }],
   },
   manifest: "/manifest.webmanifest",
