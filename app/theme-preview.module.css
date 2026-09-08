@@ -1,0 +1,59 @@
+.preview {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  width: 310px;
+  max-width: calc(100vw - 32px);
+  color: #302838;
+  background: #fff;
+  border: 1px solid #ded9e4;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px #30283820;
+  font-size: 12px;
+}
+
+.preview:not([open]) { width: max-content; }
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  border-radius: 16px;
+}
+.toggle::-webkit-details-marker { display: none; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.badge { margin-left: auto; padding: 3px 7px; background: #f2eff5; border-radius: 6px; font-size: 10px; color: #696070; }
+.chevron { font-size: 17px; line-height: 1; }
+.preview[open] .chevron { transform: rotate(180deg); }
+.panel { padding: 0 16px 16px; max-height: calc(100dvh - 110px); overflow-y: auto; }
+.intro { margin: 0 0 14px; color: #696070; line-height: 1.6; }
+.options { display: grid; gap: 6px; }
+.options button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: 1px solid #e8e4ec;
+  border-radius: 10px;
+  background: #fff;
+  color: inherit;
+  text-align: left;
+}
+.options button:hover { background: #f7f5f9; }
+.options button[aria-pressed="true"] { border-color: var(--preview-accent); background: var(--soft); box-shadow: inset 0 0 0 1px var(--preview-accent); }
+.swatch { flex: 0 0 27px; height: 27px; border-radius: 50%; background: linear-gradient(135deg, var(--preview-accent), var(--preview-secondary)); }
+.options strong { display: block; font-size: 12px; }
+.options small { display: block; margin-top: 2px; font-size: 10px; color: #696070; }
+.auto { width: 100%; min-height: 42px; margin-top: 10px; border: 1px solid #ded9e4; border-radius: 10px; color: inherit; background: #fff; font-size: 12px; font-weight: 600; }
+.auto[aria-pressed="true"] { color: var(--accent-dark); border-color: var(--accent); background: var(--soft); }
+.auto:hover { background: var(--soft); }
+.status { margin: 14px 0 8px; color: var(--accent-dark); font-size: 11px; line-height: 1.7; font-weight: 600; }
+.note { margin: 0; color: #696070; font-size: 10px; line-height: 1.7; }
+.preview button:focus-visible, .toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 600px) { .preview { right: 16px; bottom: 16px; } }

@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Digital products, workflow automation, and AI systems for growing businesses.",
     start_url: "/",
     display: "standalone",
-    background_color: "#020817",
-    theme_color: "#020817",
+    background_color: "#fbfaf7",
+    theme_color: "#fbfaf7",
     icons: [
       {
         src: "/media/icon-192.png",

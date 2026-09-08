@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./neural-network.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://neuraops.in"),
@@ -76,8 +77,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#020817",
-  colorScheme: "dark",
+  themeColor: "#fbfaf7",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
