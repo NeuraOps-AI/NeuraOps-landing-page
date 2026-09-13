@@ -17,7 +17,7 @@ These are information-architecture and messaging observations from the official 
 ## Resulting design
 
 - Warm white backgrounds, locally hosted Manrope, restrained colours, and generous spacing.
-- A rotating 3D neural spiral with branching neuron bodies, connected synapses, and travelling signals. Its labels identify AI applications, CloudOps, and software engineering. No company logo is placed inside the animation.
+- The original NeuraOps infinity silhouette formed as an open neural mesh with the original lighter gradient. Twelve branching neuron bodies, including a brighter lead neuron, travel around a continuous infinity circuit with fading trails. The full symbol revolves in 3D with perspective and a recessed mesh providing depth. Interactive AI applications, CloudOps, and software engineering badges orbit the symbol and pause their orbit on hover or focus.
 - A large featured AI service, followed by software and automation services in complementary layouts.
 - Three interactive business examples, explicitly labelled as simulations.
 - A short company introduction, accessible FAQs, and working email/phone contact links.
@@ -36,7 +36,11 @@ All logo instances, page colours, and animated neurons share the same daily iden
 
 ## Motion and verification
 
-The neural sculpture is drawn with Canvas 2D using projected 3D geometry. It responds to pointer movement, pauses offscreen and in hidden tabs, and limits resolution and point counts on smaller screens. The footer pause control and `prefers-reduced-motion` stop motion while allowing the daily palette to update. Navigation, use-case tabs, and FAQs support the keyboard.
+Updated 13 September 2026. The neural symbol is drawn with Canvas 2D from `app/neural-symbol.json`, sampled directly from the symbol in the supplied `logos/1_neuraops.png`. The source artwork remains intact. `node scripts/build-neural-symbol.mjs` regenerates the nodes and connections using Sharp (provided by Next.js). The open mesh follows the original silhouette and colour areas, with a recessed copy and short depth connections providing volume during rotation. The original lighter palettes and mesh opacity are restored. `app/neural-motion.ts` defines a smooth closed circuit following both lobes, with recessed synapses bridging the open tips. Arc-length sampling maintains steady travel through the curves. Palettes follow the active daily logo through `useDailyTheme`.
+
+At normal speed, every large neuron completes the whole circuit in 30 seconds, and the entire symbol completes a 360-degree revolution in 60 seconds. Tilt and roll follow this slower rotation. Rotation lingers at full-face views and moves faster through edge-on views. Small mesh nodes form the supporting structure; large neuron bodies and their dendrites travel continuously. Clicking or tapping the symbol or a badge sends an activation wave and adds a gentle, brief speed boost (up to 35% for the flow and 10% for rotation), then smoothly returns to normal speed. Badges also update the service caption. Native buttons support Enter and Space. Badge orbits hold on hover/focus to make selection easier. All canvas motion and badge orbits pause offscreen or in hidden tabs, and pixel density is capped at 1.5. The footer pause control and `prefers-reduced-motion` stop continuous motion; activation gives static highlighting in these modes, and the daily palette still updates.
+
+`tests/neural-motion.test.mjs` verifies complete lobe traversal, smooth loop closure, a monotonic full revolution, and acceleration/pause behaviour. Browser checks additionally inspect all moving neuron bodies, front/edge/reverse/return poses, actual mobile taps, keyboard input, all four palettes, and offscreen/reduced-motion pausing.
 
 Run `npm.cmd run dev` for local development, `npm.cmd run lint` for linting, and `npm.cmd test` for a production build plus the brand/metadata checks.
 
