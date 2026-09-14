@@ -25,14 +25,19 @@ These are information-architecture and messaging observations from the official 
 
 ## Original brand and daily colour
 
-The original PNGs in `logos/` remain intact. `public/logos/*_neuraops.svg` contains the original PNG artwork in a tightly framed SVG, with an alpha filter removing its white paper background. The symbol and caption are retained. These are SVG containers for the supplied artwork, not newly traced vector logos.
+The original PNGs in `logos/` remain intact. SVG logos 1–4 embed their original PNGs and remove the white paper with an alpha filter. Logos 5–7 are resolution-independent vector artwork: smooth paths fitted to the supplied infinity symbol, wordmark, and caption, with vector gradients and fold shading. They contain no embedded bitmap, raster mask, image filter, or external font. Their spatial gradients share the three colour stops of the neural animation. Run `npm.cmd run brand:logos` to regenerate them using the development-only Potrace tracer and Sharp. The generated SVG assets are served as static files; no tracing runs in the browser or production server.
 
-All logo instances, page colours, and animated neurons share the same daily identity. `app/brand-themes.ts` is the single source of palettes for both CSS and canvas. The cycle is 1 → 2 → 3 → 4, anchored to 7 September 2026 and changing at midnight Asia/Kolkata. A visitor who keeps the page open receives the next identity at midnight; returning to a background tab also resynchronizes it. No rebuild, refresh, or administrator action is needed.
+All logo instances, page colours, and animated neurons share the same daily identity. `app/brand-themes.ts` is the single source of palettes for CSS, canvas, and the three new logo colourways. The seven-day cycle is anchored to Monday, 7 September 2026 and changes at midnight Asia/Kolkata. Sunday returns to Monday's identity. A visitor who keeps the page open receives the next identity at midnight; returning to a background tab also resynchronizes it. No rebuild, refresh, or administrator action is needed for the daily switch.
 
-1. Cyan and blue
-2. Orchid, magenta, and blue
-3. Steel blue and navy
-4. Violet and cyan
+| Day | Logo | Palette |
+| --- | --- | --- |
+| Monday | 1 | Cyan & blue |
+| Tuesday | 2 | Magenta & electric blue |
+| Wednesday | 3 | Steel blue & navy |
+| Thursday | 4 | Cyan & violet |
+| Friday | 5 | Emerald & sapphire, through turquoise |
+| Saturday | 6 | Coral & violet, through pink |
+| Sunday | 7 | Amber & teal, through jade |
 
 ## Motion and verification
 
@@ -40,10 +45,10 @@ Updated 13 September 2026. The neural symbol is drawn with Canvas 2D from `app/n
 
 At normal speed, every large neuron completes the whole circuit in 30 seconds, and the entire symbol completes a 360-degree revolution in 60 seconds. Tilt and roll follow this slower rotation. Rotation lingers at full-face views and moves faster through edge-on views. Small mesh nodes form the supporting structure; large neuron bodies and their dendrites travel continuously. Clicking or tapping the symbol or a badge sends an activation wave and adds a gentle, brief speed boost (up to 35% for the flow and 10% for rotation), then smoothly returns to normal speed. Badges also update the service caption. Native buttons support Enter and Space. Badge orbits hold on hover/focus to make selection easier. All canvas motion and badge orbits pause offscreen or in hidden tabs, and pixel density is capped at 1.5. The footer pause control and `prefers-reduced-motion` stop continuous motion; activation gives static highlighting in these modes, and the daily palette still updates.
 
-`tests/neural-motion.test.mjs` verifies complete lobe traversal, smooth loop closure, a monotonic full revolution, and acceleration/pause behaviour. Browser checks additionally inspect all moving neuron bodies, front/edge/reverse/return poses, actual mobile taps, keyboard input, all four palettes, and offscreen/reduced-motion pausing.
+`tests/neural-motion.test.mjs` verifies complete lobe traversal, smooth loop closure, a monotonic full revolution, and acceleration/pause behaviour. Brand checks cover all seven midnight transitions, weekly repetition, month/year boundaries, text contrast, original assets 1–4, and vector-only output for logos 5–7. Rendered vector silhouettes are compared to the supplied symbol, wordmark, and caption separately to guard their fidelity. Browser checks additionally inspect all moving neuron bodies, front/edge/reverse/return poses, actual mobile taps, keyboard input, daily palettes, and offscreen/reduced-motion pausing.
 
 Run `npm.cmd run dev` for local development, `npm.cmd run lint` for linting, and `npm.cmd test` for a production build plus the brand/metadata checks.
 
 ### Preview the daily themes from the UI
 
-In local development, open the **Theme preview** control at the bottom right. Choose **Logo 1**, **Logo 2**, **Logo 3**, or **Logo 4** to update both logo instances, page colours, and the neural animation together. Choose **Auto** to return to today's scheduled identity. The preview is temporary and resets on refresh; the automatic schedule continues running underneath it. Production builds do not show the panel and always use the automatic daily identity.
+In local development, open the **Theme preview** control at the bottom right. Choose any of **Logo 1** through **Logo 7** to update both logo instances, page colours, and the neural animation together. Choose **Auto** to return to today's scheduled identity. The preview is temporary and resets on refresh; the automatic schedule continues running underneath it. Production builds do not show the panel and always use the automatic daily identity.

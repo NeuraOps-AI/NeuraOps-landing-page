@@ -60,8 +60,10 @@ export function DailyBrandProvider({ initialLogo, children }: {
   </BrandContext.Provider>;
 }
 
-export function DailyLogo({ prominent = false }: { prominent?: boolean }) {
+export function DailyLogo({ prominent = false, aboveFold = false }: { prominent?: boolean; aboveFold?: boolean }) {
   const logo = useContext(BrandContext);
+  // Both placements share one asset. Eager loading also keeps the footer copy
+  // from overriding the header's loading mode in Next's URL-keyed LCP check.
   return <span className="original-logo" data-logo={logo}>
     <Image
       src={`/logos/${logo}_neuraops.svg`}
@@ -69,7 +71,8 @@ export function DailyLogo({ prominent = false }: { prominent?: boolean }) {
       width={logo === 2 ? 1050 : 1190}
       height={logo === 2 ? 674 : 725}
       sizes={prominent ? "240px" : "190px"}
-      priority={prominent}
+      loading="eager"
+      fetchPriority={aboveFold ? "high" : "auto"}
       unoptimized
     />
   </span>;

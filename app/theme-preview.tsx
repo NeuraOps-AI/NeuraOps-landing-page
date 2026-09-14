@@ -36,7 +36,7 @@ export function ThemePreview({ scheduledLogo, previewLogo, onSelect }: {
       <span className={styles.chevron} aria-hidden="true">⌃</span>
     </summary>
     <div className={styles.panel}>
-      <p className={styles.intro}>Try each logo with its page colours and neural animation.</p>
+      <p className={styles.intro}>Seven days, seven identities. Try each logo with its page colours and neural animation.</p>
       <div className={styles.options} role="group" aria-label="Preview a logo and colour theme">
         {BRAND_THEMES.map((theme, index) => <button
           key={theme.name}

@@ -38,6 +38,24 @@ export const BRAND_THEMES: readonly BrandTheme[] = [
     strong: "#e3def7", closing: "#292044",
     neurons: [[0, 177, 233], [66, 107, 239], [131, 43, 235]],
   },
+  {
+    name: "Emerald & sapphire", accent: "#087f6f", accentDark: "#115b50",
+    secondary: "#4776ed", soft: "#e6f6ef", tint: "#eff9f3",
+    strong: "#ccebdd", closing: "#112f2a",
+    neurons: [[0, 193, 129], [0, 157, 189], [52, 89, 224]],
+  },
+  {
+    name: "Coral & violet", accent: "#b64562", accentDark: "#803347",
+    secondary: "#8661e8", soft: "#fcecef", tint: "#fff3f1",
+    strong: "#f6d5dc", closing: "#38222c",
+    neurons: [[246, 118, 78], [224, 66, 144], [109, 63, 214]],
+  },
+  {
+    name: "Amber & teal", accent: "#94601e", accentDark: "#704319",
+    secondary: "#078ca4", soft: "#fbf2e3", tint: "#fcf7ee",
+    strong: "#f0dfbf", closing: "#332a20",
+    neurons: [[239, 176, 53], [124, 174, 93], [0, 134, 158]],
+  },
 ];
 
 export function themeForLogo(logo: number): BrandTheme {
