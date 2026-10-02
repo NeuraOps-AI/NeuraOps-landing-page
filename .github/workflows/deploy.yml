@@ -1,5 +1,5 @@
 # Terraform commits this file to NeuraOps-landing-page as .github/workflows/deploy.yml.
-# Repo needs a Dockerfile (Next standalone, listen on PORT 3000) before the first run.
+# Deploy variables live on the GitHub Environment "prod", not repository variables.
 
 name: Deploy to ECS
 
@@ -15,6 +15,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: prod
     permissions:
       id-token: write
       contents: read
@@ -35,7 +36,7 @@ jobs:
         run: |
           if [ -z "$AWS_ROLE_ARN" ] || [ -z "$AWS_REGION" ]; then
             echo "AWS_ROLE_ARN or AWS_REGION is empty."
-            echo "Open Settings → Secrets and variables → Actions → Variables and re-run terraform apply."
+            echo "Open Settings → Environments → prod → Variables and re-run terraform apply."
             exit 1
           fi
           echo "Assuming $AWS_ROLE_ARN in $AWS_REGION"
