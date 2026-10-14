@@ -1,0 +1,72 @@
+/* Full-width neural stage: content is layered above the interactive canvas. */
+.hero { background: radial-gradient(ellipse at 50% 55%,var(--tint),var(--paper) 72%); }
+.hero-stage { position:relative; isolation:isolate; min-height:760px; }
+.hero .hero-layout { position:relative; z-index:3; display:flex; flex-direction:row; justify-content:center; align-items:center; min-height:760px; pointer-events:none; text-align:center; }
+.hero .hero-copy { width:min(690px,100%); padding:110px 0 130px; }
+.hero-copy::before { content:""; position:absolute; z-index:-1; inset:7% -15%; background:radial-gradient(ellipse, var(--paper) 26%, color-mix(in srgb,var(--paper) 92%,transparent) 45%,transparent 72%); pointer-events:none; }
+.hero .hero-eyebrow { font-size:12px; padding:9px 15px; border:1px solid color-mix(in srgb,var(--accent) 14%,transparent); background:color-mix(in srgb,var(--paper) 92%,transparent); }
+.hero h1 { font-size:clamp(64px,6.7vw,100px); line-height:1.04; letter-spacing:-5px; margin:26px 0; font-weight:500; }
+.hero h1>span { background:linear-gradient(110deg,var(--accent-dark),var(--accent) 65%,var(--alt)); background-clip:text; color:transparent; }
+.hero .hero-description { max-width:510px; margin:auto; color:#605a66; font-size:17px; line-height:1.8; text-wrap:pretty; }
+.hero .hero-actions { justify-content:center; gap:25px; margin-top:28px; }
+.hero-actions a { pointer-events:auto; font-size:13px; }
+.hero .hero-signoff { display:block; font-size:11px; letter-spacing:.3px; margin-top:24px; color:#6e6674; }
+.hero .neural-visual { position:absolute; inset:0; margin:0; width:100%; height:100%; z-index:1; }
+.hero .neural-activate { border-radius:0; }
+.hero .neural-label { top:48%; width:202px; min-height:70px; padding:13px; }
+.hero .neural-label strong { font-size:12px; }
+.hero .neural-label small { font-size:9px; }
+.hero .neural-caption { bottom:22px; }
+.hero .neural-caption #neural-hint { font-size:11px; }
+.hero .neural-orbit-track { left:8%;right:8%;top:13%;bottom:17%; }
+.hero .neural-halo { inset:10% 0; }
+.hero-foot { position:relative; z-index:4; }
+.hero-foot>p,.hero-foot>a { font-size:11px; color:#6e6674; }
+.desktop-nav { font-size:13px; }
+.capability-content>p,.case-copy>p,.principle p,.about-manifesto>p:not(.eyebrow),.faq-list details>p { font-size:15px; line-height:1.85; color:#645e6b; }
+.section-heading>p:not(.eyebrow),.split-heading>p { font-size:15px; color:#645e6b; }
+.intro-bottom p { font-size:17px; color:#645e6b; }
+.delivery-section { background:var(--tint); border-block:1px solid var(--line); }
+.delivery-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:54px; }
+.delivery-number { display:flex; align-items:center; justify-content:space-between; border-top:1px solid color-mix(in srgb,var(--accent) 35%,transparent); padding-top:20px; color:var(--accent); font-size:12px; }
+.delivery-number .arrow { opacity:.6; }
+.delivery-step h3 { font-size:25px; font-weight:500; margin:24px 0 12px; letter-spacing:-.7px; }
+.delivery-step p { font-size:14px; color:#645e6b; line-height:1.85; }
+.delivery-output { display:inline-block; margin-top:22px; font-size:11px; font-weight:600; color:var(--accent-dark); }
+@media (min-width:1600px) { .hero-stage,.hero .hero-layout { min-height:820px; } }
+@media (max-width:1000px) and (min-width:760px) { .hero .hero-copy { width:540px; }.hero h1 { font-size:76px; }.hero .neural-label { width:172px; }.hero .neural-label strong { font-size:10px; } }
+@media (max-width:1000px) {
+ .hero-stage,.hero .hero-layout { min-height:830px; }
+ .hero .hero-layout { align-items:flex-start; }
+ .hero .hero-copy { padding:56px 0 0; max-width:560px; }
+ .hero-copy::before { inset:0 -20% -45px; background:radial-gradient(ellipse,var(--paper) 30%,color-mix(in srgb,var(--paper) 94%,transparent) 48%,transparent 73%); }
+ .hero h1 { font-size:clamp(49px,9vw,72px);letter-spacing:-3px; margin:23px 0; }
+ .hero .hero-description { font-size:15px;max-width:450px; }
+ .hero .hero-actions { margin-top:24px;gap:18px; }
+ .hero-actions a { font-size:12px; }
+ .hero .hero-signoff { margin-top:20px; }
+ .hero .neural-label { top:76%;width:160px;min-height:62px;padding:10px;gap:8px; }
+ .hero .neural-label strong { font-size:10px; }
+ .hero .neural-label small { font-size:8px;line-height:1.4; }
+ .hero .neural-caption { bottom:20px; }
+ .hero .neural-orbit-track { top:65%;bottom:12%;left:12%;right:12%; }
+ .delivery-steps { grid-template-columns:repeat(2,1fr);gap:35px 25px; }
+}
+@media (max-width:420px) {
+ .hero .hero-eyebrow { font-size:10px; }
+ .hero .hero-description { max-width:330px;font-size:14px; }
+ .hero .hero-actions { flex-direction:column;gap:17px; }
+ .hero .hero-signoff { font-size:10px; }
+ .hero-stage,.hero .hero-layout { min-height:880px; }
+ .hero .neural-label { width:148px; }
+ .hero .neural-label-icon { width:23px; }
+ .delivery-steps { grid-template-columns:1fr; }
+ .hero-foot { align-items:flex-start;gap:15px; }
+ .hero-foot>p,.hero-foot>a { font-size:10px; }
+}
+/* A centred, persistent neural canvas; foreground sections pass over it. */
+.site{position:relative;isolation:isolate}.neural-backdrop{position:fixed;inset:106px 0 0;z-index:0;pointer-events:auto}.neural-backdrop .neural-visual{width:100%;height:100%;margin:0;position:absolute;inset:0}.neural-backdrop .neural-label{top:50%;width:186px}.neural-backdrop .neural-caption{bottom:12px}.neural-backdrop .neural-orbit-track{inset:15% 10%}.hero{background:transparent;pointer-events:none}.hero-stage{isolation:auto}.hero-copy::before{display:none}.hero .hero-copy{position:relative;text-shadow:0 2px 18px var(--paper)}.hero .hero-description{background:color-mix(in srgb,var(--paper) 62%,transparent);border-radius:18px;padding:10px 16px;backdrop-filter:blur(3px)}.hero .hero-layout{min-height:calc(100svh - 170px)}.hero-stage{min-height:calc(100svh - 170px)}.hero-foot a{pointer-events:auto}main{position:relative;z-index:1;pointer-events:none}main>section:not(.hero){position:relative;pointer-events:auto}main>section:not(.hero):not(.solution-studio):not(.closing-section){background:color-mix(in srgb,var(--paper) 91%,transparent);backdrop-filter:blur(5px)}.challenge-section,.about-section,.faq-section{border-radius:24px;padding-inline:28px}.footer{position:relative;z-index:2;background:var(--paper)}.footer-themes{display:flex;justify-content:space-between;align-items:center;gap:24px;border-top:1px solid var(--line);padding:28px 0}.footer-themes h3{font-size:17px;font-weight:500;letter-spacing:-.3px}.footer-themes p{font-size:12px;color:var(--muted);margin-top:5px}.theme-options{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.theme-options button{position:relative;width:34px;height:34px;border:1px solid transparent;background:transparent;border-radius:50%;padding:4px}.theme-options button>span:first-child{display:block;width:100%;height:100%;border-radius:50%}.theme-options button[aria-pressed=true]{border-color:var(--accent)}.theme-options .theme-auto{width:auto;border:1px solid var(--line);border-radius:20px;padding:7px 13px;font-size:11px;height:34px}.theme-options .theme-auto[aria-pressed=true]{background:var(--soft);color:var(--accent-dark);border-color:var(--accent)}.theme-check{position:absolute;inset:0;display:grid;place-items:center;color:white;font-size:12px}.theme-options button:hover{transform:translateY(-2px)}
+@media(min-width:1600px){.hero-stage,.hero .hero-layout{min-height:calc(100svh - 170px)}}
+@media(max-width:1000px){.hero .hero-layout{align-items:center}.hero .hero-copy{padding:90px 0 100px}.hero-stage,.hero .hero-layout{min-height:calc(100svh - 160px)}.neural-backdrop .neural-label{width:148px;min-height:55px;padding:9px;gap:7px}.neural-backdrop .neural-label strong{font-size:10px}.neural-backdrop .neural-label small{font-size:8px}.neural-backdrop .neural-label-icon{width:23px}.neural-backdrop .neural-caption{display:none}}
+@media(max-width:600px){.neural-backdrop{top:87px}.hero .hero-copy{padding:85px 0 120px}.hero h1{font-size:clamp(45px,11vw,64px)}.hero .hero-description{font-size:14px;background:color-mix(in srgb,var(--paper) 70%,transparent)}.neural-backdrop .neural-label{top:70%}.footer-themes{align-items:flex-start;flex-direction:column;gap:17px}.theme-options{gap:7px}.theme-options button{width:30px;height:30px}.theme-options .theme-auto{height:30px;padding:5px 9px}.challenge-section,.about-section,.faq-section{padding-inline:18px}.hero-stage,.hero .hero-layout{min-height:calc(100svh - 140px)}}
+@media(max-width:600px){.theme-options{display:grid;grid-template-columns:repeat(7,30px);gap:10px}.theme-options .theme-auto{grid-column:1/-1;justify-self:start}.hero h1{ text-shadow:none }}

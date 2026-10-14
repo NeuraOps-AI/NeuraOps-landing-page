@@ -1,0 +1,54 @@
+/* One logo-derived canvas throughout the page. Local surfaces protect text,
+   rather than painting an opaque background over the whole neural network. */
+.brand-theme{--paper:color-mix(in srgb,var(--tint) 45%,#fff);--muted:color-mix(in srgb,var(--accent-dark) 45%,#61616b);--line:color-mix(in srgb,var(--accent) 18%,transparent)}
+.site main>section:not(.hero),.site .footer{background:transparent;backdrop-filter:none;color:var(--ink)}
+.solution-studio:before,.closing-glow,.closing-circuit{display:none}.neural-backdrop .neural-caption{display:none}
+.neural-backdrop{background:radial-gradient(ellipse at center,transparent 35%,color-mix(in srgb,var(--soft) 28%,transparent));}
+.neural-backdrop .neural-label{transition:opacity .3s}
+.site main>section{border-color:var(--line)}
+.challenge-section,.about-section,.faq-section{border-radius:0}
+.studio-heading h2>span,.closing-content h2>span,.about-manifesto h2>span{color:var(--accent)}
+.studio-heading .eyebrow,.studio-kicker,.closing-content>.eyebrow{color:var(--accent-dark)}
+.studio-heading>p,.studio-copy>p:not(.studio-kicker),.closing-content>p:not(.eyebrow),.contact-email{color:var(--muted)}
+.studio-copy .studio-problem{color:var(--ink)!important}
+.studio-copy,.about-manifesto,.principles,.faq-list,.challenge-links,.challenge-section>div:first-child{background:color-mix(in srgb,var(--paper) 68%,transparent);border-radius:18px;padding:22px;}
+.studio-copy li{border-color:var(--line);color:var(--accent-dark);background:color-mix(in srgb,var(--soft) 65%,transparent)}
+.studio-link{color:var(--accent-dark);border-color:var(--accent)}
+.studio-tabs{background:color-mix(in srgb,var(--paper) 75%,transparent);border-color:var(--line)}
+.studio-tabs button{color:var(--muted)}.studio-tabs button:hover{background:var(--soft)}.studio-tabs button[aria-selected=true],.studio-tabs button[aria-selected=true]:hover{background:var(--accent);color:white}
+.showcase-stage{background:linear-gradient(145deg,color-mix(in srgb,var(--paper) 45%,transparent),color-mix(in srgb,var(--soft) 65%,transparent));border:1px solid var(--line)}
+.showcase-glow{opacity:.35}.showcase-orbit{opacity:.35}.showcase-perspective{translate:0 var(--scroll-lift,0px);transition:transform .7s ease-out,translate .35s ease-out}
+.showcase-controls button{color:var(--muted)}.showcase-controls button[aria-pressed=true]{color:var(--accent-dark)}.showcase-controls button>i{background:var(--line)}.showcase-controls button[aria-pressed=true]>i:after{background:var(--accent)}.showcase-controls .showcase-pause{color:var(--accent-dark);border-color:var(--line);background:var(--paper)}.showcase-controls button:focus-visible{outline-color:var(--accent)}
+.growth-path{border-color:var(--line)}.growth-path>span,.growth-path p{color:var(--muted)}.growth-path b{color:var(--accent)}
+.capability{background:color-mix(in srgb,var(--paper) 78%,transparent)}.service-motion{background:linear-gradient(145deg,color-mix(in srgb,var(--soft) 65%,transparent),#ffffff35)}.capability-visual{background:transparent}.delivery-step{background:color-mix(in srgb,var(--paper) 70%,transparent)}
+.closing-content{padding-block:35px;background:color-mix(in srgb,var(--paper) 63%,transparent);border:1px solid var(--line);border-radius:24px}.closing-content .button{background:var(--accent);color:#fff}.footer-main,.footer-themes,.footer-bottom{background:color-mix(in srgb,var(--paper) 72%,transparent);padding-inline:20px}.footer{border-radius:24px}.hero h1{text-shadow:none}
+/* Native scroll timelines animate decorative service illustrations without
+   hijacking scrolling. Unsupported browsers retain the existing animations. */
+@supports(animation-timeline:view()){
+ .capability-visual .service-motion{animation:service-scroll-reveal linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+ .delivery-step{animation:step-scroll-reveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+}
+@keyframes service-scroll-reveal{from{transform:translateY(28px) scale(.92);filter:saturate(.5)}to{transform:none;filter:saturate(1)}}
+@keyframes step-scroll-reveal{from{transform:translateY(22px)}to{transform:none}}
+.site[data-paused=true] .showcase-perspective{translate:none}
+@media(prefers-reduced-motion:reduce){.showcase-perspective{translate:none!important}.capability-visual .service-motion,.delivery-step{animation:none!important;transform:none!important;filter:none!important}}
+@media(max-width:600px){.studio-copy,.about-manifesto,.principles,.faq-list,.challenge-links,.challenge-section>div:first-child{padding:16px}.challenge-section,.about-section,.faq-section{padding-inline:0}.closing-content{padding:28px 18px}.footer-main,.footer-themes,.footer-bottom{padding-inline:10px}}
+.site main>section:not(.hero):not(.solution-studio):not(.closing-section){background:transparent;backdrop-filter:none}
+.motion-showcase[data-scroll-driven=true] .showcase-controls button[aria-pressed=true]>i:after{animation:none;transform:scaleX(1)}
+@supports(animation-timeline:scroll()){
+ .neural-backdrop .neural-label{animation:badge-retreat linear both;animation-timeline:scroll();animation-range:0px 650px}
+}
+@keyframes badge-retreat{0%,25%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+/* Empty layout areas pass pointer input to the fixed canvas. Content and
+   controls keep normal selection, focus, and click behaviour. */
+.site main>section:not(.hero),.site main>section:not(.hero)>.shell,.site .footer{pointer-events:none}
+.site main :is(a,button,input,select,textarea,summary,details,p,h1,h2,h3,h4,li,.capability,.studio-copy,.motion-showcase,.delivery-step,.principle),.footer :is(a,button,select,label,p,h3){pointer-events:auto}
+.site .footer{margin-top:24px;padding-top:0;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--paper) 88%,transparent)}
+.footer .footer-main{padding:24px;gap:28px;grid-template-columns:1.2fr .8fr 1fr .8fr;background:transparent}
+.footer .footer-brand .original-logo{width:140px;height:86px}.footer .footer-brand>p{margin-top:8px;font-size:12px;line-height:1.6;color:var(--accent-dark)}
+.footer .footer-links{padding-top:5px;gap:10px}.footer .footer-links h3{font-size:13px;color:var(--ink);font-weight:650;margin-bottom:3px}
+.footer .footer-links a,.footer .footer-links>span,.footer .footer-note p{font-size:12px;line-height:1.6;color:var(--accent-dark)}.footer .footer-links a:hover{text-decoration:underline;text-underline-offset:4px}.footer .footer-note{padding-top:5px}
+.footer .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 24px;background:transparent;font-size:11px;color:var(--accent-dark)}.footer .footer-bottom>span{flex-basis:auto;order:-1}.footer .motion-toggle{font-size:11px;color:var(--accent-dark);padding:8px 0}
+.footer-theme-select{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--accent-dark)}.footer-theme-select select{max-width:210px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--accent-dark);padding:9px 30px 9px 11px;font-size:11px;cursor:pointer}.footer-theme-select select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:1000px){.footer .footer-main{grid-template-columns:1fr 1fr 1fr}.footer .footer-note{display:none}.footer .footer-bottom{flex-wrap:wrap}.footer-theme-select{margin-left:auto}}
+@media(max-width:600px){.footer .footer-main{padding:20px;grid-template-columns:1fr 1fr;gap:20px}.footer .footer-brand{grid-column:1/-1;justify-content:flex-start;gap:22px}.footer .footer-brand .original-logo{width:115px;height:70px}.footer .footer-brand>p{font-size:10px;max-width:155px;margin:0}.footer .footer-links a,.footer .footer-links>span{font-size:11px}.footer .footer-bottom{padding:15px 20px;gap:12px}.footer .footer-bottom>span{width:100%;font-size:10px}.footer-theme-select{width:100%;margin:0;justify-content:space-between}.footer-theme-select select{max-width:205px}.footer .motion-toggle{font-size:11px}.footer .footer-bottom>a{margin-left:auto}}

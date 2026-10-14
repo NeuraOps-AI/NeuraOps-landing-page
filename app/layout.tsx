@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./neural-network.css";
+import "./hero-stage.css";
+import "./solution-studio.css";
+import "./motion-showcase.css";
+import "./continuous-theme.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://neuraops.in"),

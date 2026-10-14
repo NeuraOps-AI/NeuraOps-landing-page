@@ -52,3 +52,44 @@ Run `npm.cmd run dev` for local development, `npm.cmd run lint` for linting, and
 ### Preview the daily themes from the UI
 
 In local development, open the **Theme preview** control at the bottom right. Choose any of **Logo 1** through **Logo 7** to update both logo instances, page colours, and the neural animation together. Choose **Auto** to return to today's scheduled identity. The preview is temporary and resets on refresh; the automatic schedule continues running underneath it. Production builds do not show the panel and always use the automatic daily identity.
+
+### Full-width neural hero — 14 October 2026
+
+The hero now uses the original neural infinity as an interactive background, with the headline, description, and calls to action layered above it. A soft radial veil keeps text readable without changing the approved mesh gradients. The content wrapper passes pointer events through to the canvas; CTA links remain independently clickable. Mobile and tablet layouts move the badge orbit below the main message. The existing 30-second neuron circuit, 60-second revolution, activation waves, pause controls, and weekly brand schedule remain in place.
+
+Copy now explains the relationship between AI applications, custom product engineering, and CloudOps. A four-step delivery section describes discovery, prototyping, implementation, and post-launch planning. Examples remain labelled as illustrative; no customer claims or performance statistics were added.
+
+QA: inspected desktop (1440px), tablet (820px), and mobile (390px and 320px) layouts. Checked background pointer activation, keyboard/service activation, animation pause, mobile navigation, workflow completion, FAQ expansion, and all seven logo/palette mappings. No console warnings/errors were captured. All 12 existing automated tests passed. Production build passed with `npm.cmd run build -- --webpack`; default Turbopack failed while starting its CSS worker in this environment, including outside the sandbox. Screenshots are in the ignored `outputs` folder.
+
+### Supporting motion and growth story — 14 October 2026
+
+Research references: https://dribbble.com/tags/landing-page-animation (including the SwiftSupport product-interface concept), https://www.landing.love/ and its AI category, and https://lottiefiles.com/free-animations/landing-page. The useful direction is functional product illustration, contrasting section surfaces, compact service modules, and small vector animations. Some reference gallery videos did not play in the browser, so research used accessible previews and descriptions. No third-party artwork or animation files were copied or downloaded.
+
+Following the owner's clarification, NeuraOps is positioned as an end-to-end services partner helping businesses scale through software development, AI integration, analytics/dashboards, and CloudOps. Four service cards now use original CSS/SVG illustrations. A selectable solution studio provides four illustrative business scenarios, keyboard-accessible tabs, three clickable workflow stages, and contextual contact links. These are solution examples rather than claims about shipped client projects. Data-driven scenario definitions allow future services/examples to be added without rewriting the presentation.
+
+The approved hero neural mesh, its geometry, colours, speed, badges, and interactions were not edited in this supporting-motion pass. Spacing was reduced below the hero, and the oversized introduction became a compact challenge selector. The new motions use existing daily-theme variables, obey the site pause control and reduced-motion preference, and pause offscreen where continuously animated. No new animation runtime was added.
+
+Validation for the supporting-motion pass: Webpack production build and TypeScript passed; all 12 existing tests passed. Browser QA covered the four scenarios, workflow completion, Home/End keyboard navigation, changing scenarios with motion paused, desktop and 390px mobile layouts, and all seven daily palettes. The new dark studio and service illustrations correctly follow each palette, with no horizontal overflow at 390px. The local preview is retained at http://localhost:3000/.
+
+### Product motion redesign — 15 October 2026
+
+Replaced the rejected node-flow blueprint with four original layered product scenes: knowledge-grounded AI responses, a dimensional cloud stack and release checklist, a web/mobile workspace assembling in stages, and a dashboard with a drawn trend and contextual insight. Direction informed by the supplied Dribbble/SwiftSupport interface animation reference, Landing.love AI gallery (including Antimetal), and LottieFiles landing-page animation gallery. No reference artwork was copied. Uses CSS/SVG and React rather than another animation dependency.
+
+Scenes use the daily palette variables, subtle pointer perspective, three selectable chapters, local pause/resume, global pause, reduced-motion handling, visibility and offscreen suspension. Reduced-motion users can still select chapters manually. The approved neural hero was not edited in this pass.
+
+Validation: TypeScript and Webpack production build passed; all 12 existing tests passed. Browser checked four tabs, manual chapter selection, pause/resume and automatic chapter progression, desktop and 390px mobile. No mobile horizontal overflow or browser errors/warnings observed. Saved screenshots in outputs/product-scenes-final.jpg and outputs/product-scenes-mobile.jpg. These are illustrative product experiences, not claims about client projects.
+
+### Centered background and visitor themes — 15 October 2026
+Moved the neural infinity into a fixed viewport backdrop, centered its projection and reduced its scale to keep both lobes visible. Removed the broad white hero mask; foreground sections scroll above the canvas on readable surfaces. Existing neuron motion and activation remain available. Replaced the development-only floating preview with a public footer picker containing seven palettes and Daily theme. Visitor choices persist in localStorage; Daily theme clears the override and resumes the existing IST schedule. Validated saved selection across reload, return to daily mode, desktop alignment, mobile footer wrapping and no horizontal overflow. TypeScript and 12 existing tests passed; Webpack production build passed.
+
+### Continuous neural canvas and scroll motion — 15 October 2026
+Removed section-wide white and dark backgrounds across every main section and footer. All use the same daily-logo-derived light canvas, with translucent local reading surfaces and matching accent controls. Product scenes retain their own readable mockups. Orbit badges fade away as the visitor leaves the hero while the neural mesh stays fixed and visible.
+
+Scrolling adds a gently smoothed turn to the neural symbol, reveals service illustrations and delivery cards using native view timelines where supported, and advances the selected product scene through its three chapters. Scroll control suspends timed chapter advancement so the two do not compete. Manual chapter selection pauses progression. Reduced motion and the existing pause controls remain supported.
+
+Verified computed backgrounds are transparent across all eight main sections; desktop and 390px mobile views retain the mesh with no horizontal overflow. Confirmed scroll-driven scene reaches phase 2, TypeScript passed, 12 existing tests passed, and Webpack build passed. Screenshot: outputs/continuous-neural-theme.jpg.
+
+### Gap interaction and compact footer — 15 October 2026
+Empty section layout areas now pass pointer input to the neural canvas, while text, cards, and controls retain their normal interaction. Verified a physical pointer click in the gap above the footer increments the mesh activation counter. Replaced theme swatches with a labelled native select containing Daily theme and seven palettes. Tightened footer grids, logo sizing, row padding and type contrast. Verified dropdown updates the active theme and returns to daily scheduling.
+
+Visual QA at 1440x1000, 1920x1080 desktop, 820x1180 tablet, and 390x844 mobile: mesh stays within the viewport and centred; no horizontal overflow; footer uses compact responsive rows. TypeScript, all 12 tests, and production Webpack build pass. Screenshots saved in outputs/footer-compact-desktop.jpg, outputs/footer-compact-mobile.jpg, and outputs/mesh-tablet.jpg.

@@ -56,6 +56,7 @@ export default function NeuralNetwork({ paused }: { paused: boolean }) {
     const context = canvas.getContext("2d");
     if (!context) return;
     let width = 1, height = 1, frame = 0, lastFrame = 0, visible = true;
+    let scrollTurn = 0;
     let points: Point[] = [];
     let pulses: Pulse[] = [];
     const moving = !paused && !reduced;
@@ -74,8 +75,9 @@ export default function NeuralNetwork({ paused }: { paused: boolean }) {
     const circuit = Array.from({ length: 240 }, (_, i) => circuitPoint(i / 240));
 
     function positionBadges() {
-      const radiusX = Math.max(60, (width - (width < 440 ? 148 : 190)) / 2 - 12);
-      const radiusY = height * .32;
+      const compact = width < 1000;
+      const radiusX = Math.max(55, (width - (compact ? 160 : 220)) / 2 - 24);
+      const radiusY = compact ? 88 : height * .35;
       badgesRef.current.forEach((badge, index) => {
         if (!badge) return;
         const angle = orbitTime.current * .12 + (-145 + index * 120) / 180 * Math.PI;
@@ -100,14 +102,15 @@ export default function NeuralNetwork({ paused }: { paused: boolean }) {
       pointer.smoothedY += (pointer.y - pointer.smoothedY) * .08;
       context.clearRect(0, 0, width, height);
       positionBadges();
-      const scale = width * .82 * (1 + Math.sin(time * .7) * .012);
-      const yaw = revolutionAngle(motion.current.spin) + pointer.smoothedX * .2;
+      const scale = Math.min(width * .82, height * 1.45) * (1 + Math.sin(time * .7) * .012);
+      if (moving) scrollTurn += (window.scrollY * .00018 - scrollTurn) * .035;
+      const yaw = revolutionAngle(motion.current.spin) + pointer.smoothedX * .2 + scrollTurn;
       const rotationPhase = motion.current.spin / REVOLUTION_SECONDS * TAU;
       const tilt = .12 + Math.sin(rotationPhase) * .14 + pointer.smoothedY * .18;
       const roll = Math.sin(rotationPhase / 2) * .055;
       const project = (position: Position3D) => {
         const p = projectNeuron(position, yaw, tilt, roll);
-        return { ...p, x: width / 2 + p.x * scale, y: height * .46 + p.y * scale };
+        return { ...p, x: width / 2 + p.x * scale, y: height * .5 + p.y * scale };
       };
       pulses = pulses.filter(pulse => time - pulse.started < 2.8);
       points = symbol.nodes.map(([x, y, z], index) => {
@@ -265,7 +268,7 @@ export default function NeuralNetwork({ paused }: { paused: boolean }) {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return;
     const x = event.detail === 0 ? rect.width / 2 : event.clientX - rect.left;
-    const y = event.detail === 0 ? rect.height * .46 : event.clientY - rect.top;
+    const y = event.detail === 0 ? rect.height * .5 : event.clientY - rect.top;
     trigger.current(x, y, service);
     setActiveService(service);
     setActivationCount(count => count + 1);
