@@ -102,7 +102,9 @@ export default function NeuralNetwork({ paused }: { paused: boolean }) {
       pointer.smoothedY += (pointer.y - pointer.smoothedY) * .08;
       context.clearRect(0, 0, width, height);
       positionBadges();
-      const scale = Math.min(width * .82, height * 1.45) * (1 + Math.sin(time * .7) * .012);
+      // Use one scale for both axes: fill the available width while keeping
+      // the complete silhouette within short landscape viewports.
+      const scale = Math.min(width * .96, height * 1.65) * (1 + Math.sin(time * .7) * .012);
       if (moving) scrollTurn += (window.scrollY * .00018 - scrollTurn) * .035;
       const yaw = revolutionAngle(motion.current.spin) + pointer.smoothedX * .2 + scrollTurn;
       const rotationPhase = motion.current.spin / REVOLUTION_SECONDS * TAU;
@@ -298,3 +300,4 @@ export default function NeuralNetwork({ paused }: { paused: boolean }) {
     </div>
   </div>;
 }
+
