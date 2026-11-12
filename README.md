@@ -4,6 +4,25 @@ A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
 Drizzle support.
 
+## Website analytics
+
+The root layout includes Google Analytics 4 (`G-58BGVS1EHF`) and Microsoft
+Clarity (`zc2vog2p3u`) through `app/analytics-scripts.tsx`. Both scripts load after
+hydration across all pages, using Next.js Script to avoid repeated installation
+on client navigation. GA4 uses the stream's enhanced measurement settings.
+
+Tracking is enabled for production builds (`npm run build` / `npm start`) and
+disabled during `npm run dev`. Production preview deployments also send data.
+No additional environment variables or packages are required.
+The existing `AnalyticsProvider` and `useAnalytics` helpers send custom events
+to GA4. `NEXT_PUBLIC_GA_MEASUREMENT_ID` optionally overrides the default GA4 ID.
+Automatic page views come from GA4; use `trackPageView` only for virtual views
+that are not already measured automatically.
+
+After deploying, visit the live site with tracking protection disabled and verify
+the visit in GA4 Realtime and the Clarity dashboard. Browser network requests to
+Google Analytics and Clarity can also confirm that the tags are loading.
+
 ## Prerequisites
 
 - Node.js `>=22.13.0`
