@@ -5,6 +5,7 @@ import "./hero-stage.css";
 import "./solution-studio.css";
 import "./motion-showcase.css";
 import "./continuous-theme.css";
+import { AnalyticsProvider } from "./analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://neuraops.in"),
@@ -92,7 +93,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AnalyticsProvider>{children}</AnalyticsProvider>
+      </body>
     </html>
   );
 }
